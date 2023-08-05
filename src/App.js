@@ -4,6 +4,9 @@ import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Navbar';
 import ContactList from './components/ContactList';
+import UserProfile from './components/UserProfile';
+import ContactForm from './components/Actions/ContactForm';
+import NoteForm from './components/Actions/NoteForm';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -34,11 +37,28 @@ function App() {
                 <Header user={user} setUser={setUser} clientId={clientId} />
                 <Routes>
                     {user ? (
-                        <Route
-                            exact
-                            path="/"
-                            element={<ContactList user={user} />}
-                        />
+                        <>
+                            <Route
+                                exact
+                                path="/"
+                                element={<ContactList user={user} />}
+                            />
+                            <Route
+                                exact
+                                path="/profile"
+                                element={<UserProfile user={user} />}
+                            />
+                            <Route
+                                exact
+                                path="/add-contact"
+                                element={<ContactForm />}
+                            />
+                            <Route
+                                exact
+                                path="/add-note"
+                                element={<NoteForm />}
+                            />
+                        </>
                     ) : (
                         ''
                     )}

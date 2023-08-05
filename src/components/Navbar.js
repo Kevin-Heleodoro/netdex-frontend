@@ -9,8 +9,8 @@ function Header({ user, setUser, clientId }) {
         <Navbar
             expand="lg"
             className="bg-body-tertiary"
-            bg="primary"
             sticky="top"
+            data-bs-theme="dark"
         >
             <Container>
                 <Navbar.Brand href="/">
@@ -36,33 +36,33 @@ function Header({ user, setUser, clientId }) {
                         )}
                         {user ? (
                             <NavDropdown
-                                title="Dropdown"
+                                title="User Actions"
                                 id="basic-nav-dropdown"
                             >
-                                <NavDropdown.Item href="#action/3.1">
-                                    Action
+                                <NavDropdown.Item as={Link} to="/add-contact">
+                                    Add a Contact
                                 </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">
-                                    Another action
+                                <NavDropdown.Item as={Link} to="/add-note">
+                                    Add a Note
                                 </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">
+                                {/* <NavDropdown.Item href="#action/3.3">
                                     Something
                                 </NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#action/3.4">
                                     Separated link
-                                </NavDropdown.Item>
+                                </NavDropdown.Item> */}
                             </NavDropdown>
                         ) : (
                             ''
                         )}
                     </Nav>
+                    {user ? (
+                        <Logout setUser={setUser} clientId={clientId} />
+                    ) : (
+                        <Login setUser={setUser} />
+                    )}
                 </Navbar.Collapse>
-                {user ? (
-                    <Logout setUser={setUser} clientId={clientId} />
-                ) : (
-                    <Login setUser={setUser} />
-                )}
             </Container>
         </Navbar>
     );
