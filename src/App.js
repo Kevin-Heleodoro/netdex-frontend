@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Navbar';
+import ContactList from './components/ContactList';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -30,6 +32,17 @@ function App() {
         <GoogleOAuthProvider clientId={clientId}>
             <div className="App">
                 <Header user={user} setUser={setUser} clientId={clientId} />
+                <Routes>
+                    {user ? (
+                        <Route
+                            exact
+                            path="/"
+                            element={<ContactList user={user} />}
+                        />
+                    ) : (
+                        ''
+                    )}
+                </Routes>
             </div>
         </GoogleOAuthProvider>
     );

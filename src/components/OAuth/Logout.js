@@ -12,7 +12,7 @@ function Logout({ setUser, clientId }) {
 
     return (
         <div>
-            <Button variant="light" onClick={onClick}>
+            <Button variant="dark" onClick={onClick}>
                 Logout
             </Button>
         </div>
