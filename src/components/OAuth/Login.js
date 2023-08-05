@@ -1,6 +1,12 @@
-import React from 'react';
+import { Button } from 'react-bootstrap';
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode';
+
+const style = {
+    padding: '10px',
+    color: 'black',
+    curosr: 'move',
+};
 
 function Login({ setUser }) {
     const onSuccess = (res) => {
@@ -27,7 +33,11 @@ function Login({ setUser }) {
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 cookiePolicy={'single_host_origin'}
-                style={{ marginTop: '100px' }}
+                render={(renderProps) => (
+                    <Button onClick={renderProps.onClick} style={style}>
+                        Login
+                    </Button>
+                )}
                 isSignedIn={true}
                 auto_select={true}
             />

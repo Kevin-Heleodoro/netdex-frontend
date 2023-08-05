@@ -30,6 +30,12 @@ body {
     padding: 0;
 }
 
+.navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .main-container {
     margin-top: 20px;
 }

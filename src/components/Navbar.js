@@ -23,45 +23,48 @@ function Header({ user, setUser, clientId }) {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="ml-auto">
-                        <Nav.Link as={Link} to="/">
-                            Home
-                        </Nav.Link>
-                        {user ? (
-                            <Nav.Link as={Link} to="/profile">
-                                Profile
+                    <Nav className="ml-auto navbar">
+                        <div className="navbar-left">
+                            <Nav.Link as={Link} to="/">
+                                Home
                             </Nav.Link>
-                        ) : (
-                            ''
-                        )}
+                            {user ? (
+                                <Nav.Link as={Link} to="/profile">
+                                    Profile
+                                </Nav.Link>
+                            ) : (
+                                ''
+                            )}
+                        </div>
                         {user ? (
-                            <NavDropdown
-                                title="User Actions"
-                                id="basic-nav-dropdown"
-                            >
-                                <NavDropdown.Item as={Link} to="/add-contact">
-                                    Add a Contact
-                                </NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/add-note">
-                                    Add a Note
-                                </NavDropdown.Item>
-                                {/* <NavDropdown.Item href="#action/3.3">
-                                    Something
-                                </NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">
-                                    Separated link
-                                </NavDropdown.Item> */}
-                            </NavDropdown>
+                            <div className="navbar-right">
+                                <NavDropdown
+                                    title="User Actions"
+                                    id="basic-nav-dropdown"
+                                >
+                                    <NavDropdown.Item
+                                        as={Link}
+                                        to="/add-contact"
+                                    >
+                                        Add a Contact
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/add-note">
+                                        Add a Note
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item>
+                                        <Logout
+                                            setUser={setUser}
+                                            clientId={clientId}
+                                        />
+                                    </NavDropdown.Item>
+                                </NavDropdown>
+                            </div>
                         ) : (
                             ''
                         )}
                     </Nav>
-                    {user ? (
-                        <Logout setUser={setUser} clientId={clientId} />
-                    ) : (
-                        <Login setUser={setUser} />
-                    )}
+                    {user ? '' : <Login setUser={setUser} />}
                 </Navbar.Collapse>
             </Container>
         </Navbar>
