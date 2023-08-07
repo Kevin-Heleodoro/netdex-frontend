@@ -124,6 +124,10 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Roadmap
 
+### To - Do's
+
+-   [ ] Fix navbar layout so login button does not overlap the home button
+
 ### Release 1
 
 -   Google login

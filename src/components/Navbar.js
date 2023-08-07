@@ -28,16 +28,19 @@ function Header({ user, setUser, clientId }) {
                             <Nav.Link as={Link} to="/">
                                 Home
                             </Nav.Link>
-                            {user ? (
+                            {/* {user ? (
                                 <Nav.Link as={Link} to="/profile">
                                     Profile
                                 </Nav.Link>
                             ) : (
                                 ''
-                            )}
+                            )} */}
                         </div>
                         {user ? (
                             <div className="navbar-right">
+                                <Nav.Link as={Link} to="/profile">
+                                    Profile
+                                </Nav.Link>
                                 <NavDropdown
                                     title="User Actions"
                                     id="basic-nav-dropdown"
@@ -61,10 +64,12 @@ function Header({ user, setUser, clientId }) {
                                 </NavDropdown>
                             </div>
                         ) : (
-                            ''
+                            <div className="navbar-login">
+                                <Login setUser={setUser} />
+                            </div>
                         )}
                     </Nav>
-                    {user ? '' : <Login setUser={setUser} />}
+                    {/* {user ? '' : <Login setUser={setUser} />} */}
                 </Navbar.Collapse>
             </Container>
         </Navbar>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Routes, Route } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ import ContactList from './components/ContactList';
 import UserProfile from './components/UserProfile';
 import ContactForm from './components/Actions/ContactForm';
 import NoteForm from './components/Actions/NoteForm';
+import ContactDataService from './services/contacts';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -15,6 +16,24 @@ const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 function App() {
     const [user, setUser] = useState(null);
+    const [contacts, setContacts] = useState([]);
+
+    const retrieveContacts = useCallback(() => {
+        ContactDataService.getAll(user.googleId)
+            .then((response) => {
+                console.log(response);
+                setContacts(response.data.contactList);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }, [user]);
+
+    useEffect(() => {
+        if (user) {
+            retrieveContacts();
+        }
+    }, [user, retrieveContacts, setUser]);
 
     useEffect(() => {
         let loginData = JSON.parse(localStorage.getItem('login'));
@@ -41,7 +60,12 @@ function App() {
                             <Route
                                 exact
                                 path="/"
-                                element={<ContactList user={user} />}
+                                element={
+                                    <ContactList
+                                        user={user}
+                                        contacts={contacts}
+                                    />
+                                }
                             />
                             <Route
                                 exact

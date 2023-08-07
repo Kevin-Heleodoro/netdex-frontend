@@ -36,6 +36,15 @@ body {
     justify-content: space-between;
 }
 
+.navbar-right {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-login {
+    right: 0;
+}
+
 .main-container {
     margin-top: 20px;
 }
