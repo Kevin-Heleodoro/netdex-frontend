@@ -1,3 +1,13 @@
 import axios from 'axios';
 
 const BASE_URL = process.env.REACT_APP_API_BASE_URL + '/api/v1/users';
+
+class UserDataService {
+    getUserInfo(id) {
+        return axios.get(`${BASE_URL}/${id}`);
+    }
+
+    createNewUser(data) {
+        return axios.post(`${BASE_URL}/new`, data);
+    }
+}

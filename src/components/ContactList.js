@@ -5,10 +5,11 @@ import ContactDataService from '../services/contacts';
 import ContactModal from './ContactModal';
 
 const ContactList = ({ user, contacts }) => {
-    // const [contactList, setContactList] = useState(contacts);
+    const [contactDetails, setContactDetails] = useState({});
     const [showModal, setShowModal] = useState(false);
 
     const handleShowModal = (contact) => {
+        setContactDetails(contact);
         setShowModal(true);
     };
 
@@ -50,6 +51,7 @@ const ContactList = ({ user, contacts }) => {
                 <ContactModal
                     showModal={showModal}
                     setShowModal={setShowModal}
+                    contact={contactDetails}
                 />
             </Container>
         </div>

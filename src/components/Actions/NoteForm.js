@@ -1,3 +1,9 @@
+import { Form } from 'react-bootstrap';
+
 export default function NoteForm() {
-    return <div>NoteForm</div>;
+    return (
+        <Form>
+            <Form.Group></Form.Group>
+        </Form>
+    );
 }
