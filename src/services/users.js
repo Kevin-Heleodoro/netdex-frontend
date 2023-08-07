@@ -10,4 +10,8 @@ class UserDataService {
     createNewUser(data) {
         return axios.post(`${BASE_URL}/new`, data);
     }
+
+    updateUser(id, data) {
+        return axios.put(`${BASE_URL}/update/${id}`, data);
+    }
 }

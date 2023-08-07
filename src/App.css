@@ -8,6 +8,14 @@ body {
     padding-bottom: 100px;
 }
 
+.form-container {
+    margin: auto;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+}
+
 .text-to-right {
     direction: rtl;
     text-align: right;

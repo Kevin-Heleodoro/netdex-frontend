@@ -1,17 +1,22 @@
 import { useEffect, useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 export default function ContactForm({ contact, isEditing }) {
     const [disabled, setDisabled] = useState(true);
 
     const { first_name, last_name, email, company, position } = contact || '';
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('submitted');
+    };
+
     useEffect(() => {
         setDisabled(isEditing);
     }, [isEditing]);
 
     return (
-        <Form>
+        <Form onSubmit={(e) => handleSubmit(e)}>
             <Form.Group className="mb-3" controlId="contactForm.firstName">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
@@ -57,6 +62,9 @@ export default function ContactForm({ contact, isEditing }) {
                     placeholder="Pro Googler"
                 />
             </Form.Group>
+            <Button variant="success" type="submit">
+                Submit
+            </Button>
         </Form>
     );
 }

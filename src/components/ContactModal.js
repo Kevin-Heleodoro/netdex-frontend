@@ -4,8 +4,6 @@ import ContactForm from './Actions/ContactForm';
 import NoteForm from './Actions/NoteForm';
 
 const ContactModal = ({ showModal, setShowModal, contact }) => {
-    const [isEditing, setIsEditing] = useState(false);
-
     const handleEdit = () => {
         // if (!isEditing) {
         //     setIsEditing(true);
@@ -32,7 +30,7 @@ const ContactModal = ({ showModal, setShowModal, contact }) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <ContactForm contact={contact || ''} isEditing={isEditing} />
+                <ContactForm contact={contact || ''} isEditing={false} />
                 <NoteForm />
             </Modal.Body>
             <Modal.Footer>

@@ -70,17 +70,29 @@ function App() {
                             <Route
                                 exact
                                 path="/profile"
-                                element={<UserProfile user={user} />}
+                                element={
+                                    <div className="form-container">
+                                        <UserProfile user={user} />
+                                    </div>
+                                }
                             />
                             <Route
                                 exact
                                 path="/add-contact"
-                                element={<ContactForm />}
+                                element={
+                                    <div className="form-container">
+                                        <ContactForm />
+                                    </div>
+                                }
                             />
                             <Route
                                 exact
                                 path="/add-note"
-                                element={<NoteForm />}
+                                element={
+                                    <div className="form-container">
+                                        <NoteForm />
+                                    </div>
+                                }
                             />
                         </>
                     ) : (

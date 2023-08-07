@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import { googleLogout } from '@react-oauth/google';
 
 function Logout({ setUser, clientId }) {
