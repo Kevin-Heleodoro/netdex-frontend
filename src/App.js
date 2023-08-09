@@ -81,7 +81,7 @@ function App() {
                                 element={
                                     <div className="form-container">
                                         <ContactForm
-                                            isEditing={false}
+                                            editDisabled={false}
                                             newContact={true}
                                             userId={user.googleId}
                                             retrieveContacts={retrieveContacts}

@@ -6,13 +6,13 @@ import ContactDataService from '../../services/contacts';
 
 export default function ContactForm({
     contact,
-    isEditing,
+    editDisabled,
     newContact,
     userId,
     retrieveContacts,
 }) {
     const navigate = useNavigate();
-    const [disabled, setDisabled] = useState(true);
+    const [disabled, setDisabled] = useState(editDisabled);
 
     const { first_name, last_name, email, company, position } = contact || '';
 
@@ -20,15 +20,18 @@ export default function ContactForm({
         e.preventDefault();
         const formData = new FormData(e.target);
         const formObj = Object.fromEntries(formData.entries());
-        formObj.user_id = userId;
-        formObj.notes = 'Contact added to list';
 
         if (newContact) {
             handleCreateContact(formObj);
+        } else {
+            handleUpdateContact(formObj);
         }
     };
 
     const handleCreateContact = (newContactObj) => {
+        newContactObj.user_id = userId;
+        newContactObj.notes = 'Contact added to list';
+
         ContactDataService.createNewContact(newContactObj)
             .then(() => {
                 retrieveContacts();
@@ -39,9 +42,19 @@ export default function ContactForm({
             });
     };
 
+    const handleUpdateContact = (updateContactObj) => {
+        ContactDataService.updateContact(updateContactObj)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    };
+
     useEffect(() => {
-        setDisabled(isEditing);
-    }, [isEditing]);
+        setDisabled(editDisabled);
+    }, [editDisabled]);
 
     return (
         <Form onSubmit={handleSubmit}>

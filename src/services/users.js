@@ -15,3 +15,6 @@ class UserDataService {
         return axios.put(`${BASE_URL}/update/${id}`, data);
     }
 }
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default new UserDataService();
