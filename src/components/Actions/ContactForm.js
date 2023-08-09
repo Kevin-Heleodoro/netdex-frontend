@@ -1,14 +1,42 @@
 import { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-export default function ContactForm({ contact, isEditing }) {
+import ContactDataService from '../../services/contacts';
+
+export default function ContactForm({
+    contact,
+    isEditing,
+    newContact,
+    userId,
+    retrieveContacts,
+}) {
+    const navigate = useNavigate();
     const [disabled, setDisabled] = useState(true);
 
     const { first_name, last_name, email, company, position } = contact || '';
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('submitted');
+        const formData = new FormData(e.target);
+        const formObj = Object.fromEntries(formData.entries());
+        formObj.user_id = userId;
+        formObj.notes = 'Contact added to list';
+
+        if (newContact) {
+            handleCreateContact(formObj);
+        }
+    };
+
+    const handleCreateContact = (newContactObj) => {
+        ContactDataService.createNewContact(newContactObj)
+            .then(() => {
+                retrieveContacts();
+                navigate('/');
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     };
 
     useEffect(() => {
@@ -16,7 +44,7 @@ export default function ContactForm({ contact, isEditing }) {
     }, [isEditing]);
 
     return (
-        <Form onSubmit={(e) => handleSubmit(e)}>
+        <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="contactForm.firstName">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
@@ -24,6 +52,7 @@ export default function ContactForm({ contact, isEditing }) {
                     value={first_name}
                     disabled={disabled}
                     placeholder="John"
+                    name="first_name"
                 />
             </Form.Group>
             <Form.Group className="mb-3" controlId="contactForm.lastName">
@@ -33,6 +62,7 @@ export default function ContactForm({ contact, isEditing }) {
                     value={last_name}
                     disabled={disabled}
                     placeholder="Smith"
+                    name="last_name"
                 />
             </Form.Group>
             <Form.Group className="mb-3" controlId="contactForm.email">
@@ -42,6 +72,7 @@ export default function ContactForm({ contact, isEditing }) {
                     value={email}
                     disabled={disabled}
                     placeholder="name@email.com"
+                    name="email"
                 />
             </Form.Group>
             <Form.Group className="mb-3" controlId="contactForm.company">
@@ -51,6 +82,7 @@ export default function ContactForm({ contact, isEditing }) {
                     value={company}
                     disabled={disabled}
                     placeholder="Google"
+                    name="company"
                 />
             </Form.Group>
             <Form.Group className="mb-3" controlId="contactForm.position">
@@ -60,6 +92,7 @@ export default function ContactForm({ contact, isEditing }) {
                     value={position}
                     disabled={disabled}
                     placeholder="Pro Googler"
+                    name="position"
                 />
             </Form.Group>
             <Button variant="success" type="submit">

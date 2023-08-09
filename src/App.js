@@ -21,7 +21,6 @@ function App() {
     const retrieveContacts = useCallback(() => {
         ContactDataService.getAll(user.googleId)
             .then((response) => {
-                console.log(response);
                 setContacts(response.data.contactList);
             })
             .catch((e) => {
@@ -33,7 +32,7 @@ function App() {
         if (user) {
             retrieveContacts();
         }
-    }, [user, retrieveContacts, setUser]);
+    }, [user, retrieveContacts]);
 
     useEffect(() => {
         let loginData = JSON.parse(localStorage.getItem('login'));
@@ -81,7 +80,12 @@ function App() {
                                 path="/add-contact"
                                 element={
                                     <div className="form-container">
-                                        <ContactForm />
+                                        <ContactForm
+                                            isEditing={false}
+                                            newContact={true}
+                                            userId={user.googleId}
+                                            retrieveContacts={retrieveContacts}
+                                        />
                                     </div>
                                 }
                             />
