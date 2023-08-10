@@ -1,7 +1,6 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
-import ContactDataService from '../services/contacts';
 import ContactModal from './ContactModal';
 
 const ContactList = ({ user, contacts, retrieveContacts }) => {

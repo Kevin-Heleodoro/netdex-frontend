@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Modal } from 'react-bootstrap';
 import ContactForm from './Actions/ContactForm';
 import NoteForm from './Actions/NoteForm';
+
+import ContactDataService from '../services/contacts';
 
 const ContactModal = ({
     showModal,
@@ -10,6 +13,8 @@ const ContactModal = ({
     user,
     retrieveContacts,
 }) => {
+    const navigate = useNavigate();
+
     const [editDisabled, setEditDisabled] = useState(true);
     const [confirmDelete, setConfirmDelete] = useState(false);
 
@@ -17,8 +22,22 @@ const ContactModal = ({
         setEditDisabled(!editDisabled);
     };
 
+    const handleConfirmDelete = () => {
+        setConfirmDelete(!confirmDelete);
+        setEditDisabled(true);
+    };
+
     const handleDelete = () => {
-        console.log('dlete clicked');
+        ContactDataService.deleteContact(contact._id)
+            .then((response) => {
+                console.log(response);
+                setShowModal(false);
+                retrieveContacts();
+                navigate('/');
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     };
 
     return (
@@ -50,7 +69,7 @@ const ContactModal = ({
                 {editDisabled && !confirmDelete && (
                     <>
                         <Button onClick={handleEdit}>Edit</Button>
-                        <Button variant="danger" onClick={handleDelete}>
+                        <Button variant="danger" onClick={handleConfirmDelete}>
                             Delete
                         </Button>
                     </>
@@ -59,6 +78,19 @@ const ContactModal = ({
                     <>
                         <Button variant="secondary" onClick={handleEdit}>
                             Cancel
+                        </Button>
+                    </>
+                )}
+                {confirmDelete && (
+                    <>
+                        <Button
+                            variant="secondary"
+                            onClick={handleConfirmDelete}
+                        >
+                            Cancel
+                        </Button>
+                        <Button variant="danger" onClick={handleDelete}>
+                            Confirm Delete
                         </Button>
                     </>
                 )}
