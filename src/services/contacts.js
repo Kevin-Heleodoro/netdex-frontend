@@ -20,6 +20,7 @@ class ContactDataService {
     }
 
     updateContact(id, data) {
+        console.log({ id, data });
         return axios.put(`${BASE_URL}/${id}`, data);
     }
 

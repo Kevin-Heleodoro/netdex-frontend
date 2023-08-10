@@ -4,7 +4,7 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import ContactDataService from '../services/contacts';
 import ContactModal from './ContactModal';
 
-const ContactList = ({ user, contacts }) => {
+const ContactList = ({ user, contacts, retrieveContacts }) => {
     const [contactDetails, setContactDetails] = useState({});
     const [showModal, setShowModal] = useState(false);
 
@@ -52,6 +52,8 @@ const ContactList = ({ user, contacts }) => {
                     showModal={showModal}
                     setShowModal={setShowModal}
                     contact={contactDetails}
+                    user={user}
+                    retrieveContacts={retrieveContacts}
                 />
             </Container>
         </div>

@@ -63,6 +63,7 @@ function App() {
                                     <ContactList
                                         user={user}
                                         contacts={contacts}
+                                        retrieveContacts={retrieveContacts}
                                     />
                                 }
                             />

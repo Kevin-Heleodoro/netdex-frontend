@@ -8,6 +8,7 @@ export default function ContactForm({
     contact,
     editDisabled,
     newContact,
+    setEditDisabled,
     userId,
     retrieveContacts,
 }) {
@@ -43,9 +44,11 @@ export default function ContactForm({
     };
 
     const handleUpdateContact = (updateContactObj) => {
-        ContactDataService.updateContact(updateContactObj)
+        ContactDataService.updateContact(contact._id, updateContactObj)
             .then((response) => {
                 console.log(response);
+                retrieveContacts();
+                setEditDisabled(true);
             })
             .catch((e) => {
                 console.log(e);
@@ -62,7 +65,7 @@ export default function ContactForm({
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
                     type="text"
-                    value={first_name}
+                    defaultValue={first_name}
                     disabled={disabled}
                     placeholder="John"
                     name="first_name"
@@ -72,7 +75,7 @@ export default function ContactForm({
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control
                     type="text"
-                    value={last_name}
+                    defaultValue={last_name}
                     disabled={disabled}
                     placeholder="Smith"
                     name="last_name"
@@ -82,7 +85,7 @@ export default function ContactForm({
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                     type="text"
-                    value={email}
+                    defaultValue={email}
                     disabled={disabled}
                     placeholder="name@email.com"
                     name="email"
@@ -92,7 +95,7 @@ export default function ContactForm({
                 <Form.Label>Company</Form.Label>
                 <Form.Control
                     type="text"
-                    value={company}
+                    defaultValue={company}
                     disabled={disabled}
                     placeholder="Google"
                     name="company"
@@ -102,15 +105,17 @@ export default function ContactForm({
                 <Form.Label>Position</Form.Label>
                 <Form.Control
                     type="text"
-                    value={position}
+                    defaultValue={position}
                     disabled={disabled}
                     placeholder="Pro Googler"
                     name="position"
                 />
             </Form.Group>
-            <Button variant="success" type="submit">
-                Submit
-            </Button>
+            {!editDisabled && (
+                <Button variant="success" type="submit">
+                    Submit
+                </Button>
+            )}
         </Form>
     );
 }
