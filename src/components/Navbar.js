@@ -27,13 +27,6 @@ function Header({ user, setUser, clientId }) {
                             <Nav.Link as={Link} to="/">
                                 Home
                             </Nav.Link>
-                            {/* {user ? (
-                                <Nav.Link as={Link} to="/profile">
-                                    Profile
-                                </Nav.Link>
-                            ) : (
-                                ''
-                            )} */}
                         </div>
                         {user ? (
                             <div className="navbar-right">
@@ -63,9 +56,7 @@ function Header({ user, setUser, clientId }) {
                                 </NavDropdown>
                             </div>
                         ) : (
-                            <div className="navbar-login">
-                                <Login setUser={setUser} />
-                            </div>
+                            ''
                         )}
                     </Nav>
                     {/* {user ? '' : <Login setUser={setUser} />} */}

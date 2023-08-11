@@ -11,6 +11,7 @@ import ContactDataService from './services/contacts';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Login from './components/OAuth/Login';
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -104,6 +105,15 @@ function App() {
                         ''
                     )}
                 </Routes>
+                {!user && (
+                    <div className="form-container login-container">
+                        <Login
+                            user={user}
+                            setUser={setUser}
+                            clientId={clientId}
+                        />
+                    </div>
+                )}
             </div>
         </GoogleOAuthProvider>
     );

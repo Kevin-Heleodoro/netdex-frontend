@@ -49,11 +49,18 @@ body {
     flex-direction: row;
 }
 
-.navbar-login {
-}
-
 .main-container {
     margin-top: 20px;
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-container {
+    border: 1px black solid;
 }
 
 img.netdex-logo {

@@ -134,6 +134,15 @@ _For more examples, please refer to the [Documentation](https://example.com)_
     -   Users can login/logout of the application using their Google accounts
 -   Created basic structure of where components will be located and added routing to them.
 
+### Release 2
+
+-   Login button does not work on mobile.
+    -   If not logged in, the user should be presented with a login option and that's it.
+-   Contact Cards:
+    -   Company website + logo
+    -   phone number
+    -   image
+
 ![Home-Page-Screenshot][Home-Page-Screenshot]
 
 See the [open issues](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/NetDex-frontend/issues) for a full list of proposed features (and known issues).

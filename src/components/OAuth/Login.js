@@ -5,7 +5,7 @@ import jwt_decode from 'jwt-decode';
 const style = {
     padding: '10px',
     color: 'black',
-    curosr: 'move',
+    cursor: 'move',
 };
 
 function Login({ setUser }) {
