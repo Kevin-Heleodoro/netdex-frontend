@@ -146,6 +146,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 -   Navbar should hide when in collapsed mode
     -   Links should be stacked
 
+### Release 3
+
+-   User Profile retrieving database user information and populating it into editable form.
+-   If a user is logging in the for first time, a database entry will be created for them automatically once they click on the 'Profile' link.
+
 ![Home-Page-Screenshot][Home-Page-Screenshot]
 
 See the [open issues](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/NetDex-frontend/issues) for a full list of proposed features (and known issues).

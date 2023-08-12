@@ -104,7 +104,7 @@ function App() {
                     ) : (
                         <Route
                             exact
-                            path="/"
+                            path="/*"
                             element={
                                 <div className="form-container login-container">
                                     <Login
