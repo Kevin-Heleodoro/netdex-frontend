@@ -142,6 +142,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
     -   Company website + logo
     -   phone number
     -   image
+-   Watermark logo for the main page
+-   Navbar should hide when in collapsed mode
+    -   Links should be stacked
 
 ![Home-Page-Screenshot][Home-Page-Screenshot]
 

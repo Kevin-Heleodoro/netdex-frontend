@@ -102,18 +102,21 @@ function App() {
                             />
                         </>
                     ) : (
-                        ''
+                        <Route
+                            exact
+                            path="/"
+                            element={
+                                <div className="form-container login-container">
+                                    <Login
+                                        user={user}
+                                        setUser={setUser}
+                                        clientId={clientId}
+                                    />
+                                </div>
+                            }
+                        />
                     )}
                 </Routes>
-                {!user && (
-                    <div className="form-container login-container">
-                        <Login
-                            user={user}
-                            setUser={setUser}
-                            clientId={clientId}
-                        />
-                    </div>
-                )}
             </div>
         </GoogleOAuthProvider>
     );
