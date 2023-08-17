@@ -134,6 +134,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
     -   Users can login/logout of the application using their Google accounts
 -   Created basic structure of where components will be located and added routing to them.
 
+![Home-Page-Screenshot][Home-Page-Screenshot]
+
 ### Release 2
 
 -   Login button does not work on mobile.
@@ -151,13 +153,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 -   User Profile retrieving database user information and populating it into editable form.
 -   If a user is logging in the for first time, a database entry will be created for them automatically once they click on the 'Profile' link.
 
+![Contact-Details-Modal][Contact-Details-Modal]
+
 TO DO:
 
--   add a dropdown selection for adding a note to a contact
--   add contact notes to their cards
 -   style cards better
-
-![Home-Page-Screenshot][Home-Page-Screenshot]
 
 See the [open issues](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/NetDex-frontend/issues) for a full list of proposed features (and known issues).
 
@@ -196,3 +196,4 @@ Project Link: [https://github.khoury.northeastern.edu/NEU-CS5610-SU23/NetDex-fro
 [Google-Cloud]: https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white
 [Google-Cloud-url]: https://cloud.google.com/
 [Home-Page-Screenshot]: src/img/readme/home-page-release-1.png
+[Contact-Details-Modal]: src/img/readme/contact-details-modal.png
