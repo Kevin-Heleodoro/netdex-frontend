@@ -151,6 +151,12 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 -   User Profile retrieving database user information and populating it into editable form.
 -   If a user is logging in the for first time, a database entry will be created for them automatically once they click on the 'Profile' link.
 
+TO DO:
+
+-   add a dropdown selection for adding a note to a contact
+-   add contact notes to their cards
+-   style cards better
+
 ![Home-Page-Screenshot][Home-Page-Screenshot]
 
 See the [open issues](https://github.khoury.northeastern.edu/NEU-CS5610-SU23/NetDex-frontend/issues) for a full list of proposed features (and known issues).

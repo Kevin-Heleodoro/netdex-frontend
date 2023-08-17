@@ -1,6 +1,7 @@
 import { Button } from 'react-bootstrap';
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 
 const style = {
     padding: '10px',
@@ -9,6 +10,8 @@ const style = {
 };
 
 function Login({ setUser }) {
+    const navigate = useNavigate();
+
     const onSuccess = (res) => {
         var tokenData = jwt_decode(res.credential);
         var loginData = {
@@ -17,6 +20,7 @@ function Login({ setUser }) {
         };
 
         setUser(loginData);
+        navigate('/');
         localStorage.setItem('login', JSON.stringify(loginData));
         console.log(`Login success! \ncurrentUser: `, loginData);
     };

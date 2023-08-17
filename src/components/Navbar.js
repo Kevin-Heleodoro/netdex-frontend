@@ -1,7 +1,6 @@
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Logout from './OAuth/Logout';
-import Login from './OAuth/Login';
 
 function Header({ user, setUser, clientId }) {
     return (
@@ -59,7 +58,6 @@ function Header({ user, setUser, clientId }) {
                             ''
                         )}
                     </Nav>
-                    {/* {user ? '' : <Login setUser={setUser} />} */}
                 </Navbar.Collapse>
             </Container>
         </Navbar>

@@ -96,7 +96,11 @@ function App() {
                                 path="/add-note"
                                 element={
                                     <div className="form-container">
-                                        <NoteForm />
+                                        <NoteForm
+                                            contacts={contacts}
+                                            user={user}
+                                            retrieveContacts={retrieveContacts}
+                                        />
                                     </div>
                                 }
                             />

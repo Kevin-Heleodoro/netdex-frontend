@@ -31,7 +31,7 @@ export default function ContactForm({
 
     const handleCreateContact = (newContactObj) => {
         newContactObj.user_id = userId;
-        newContactObj.notes = 'Contact added to list';
+        newContactObj.note = 'Contact added to list';
 
         ContactDataService.createNewContact(newContactObj)
             .then(() => {

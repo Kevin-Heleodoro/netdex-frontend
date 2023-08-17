@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
 
 import UserDataService from '../services/users';
 import UserForm from './Actions/UserForm';
@@ -7,7 +6,7 @@ import UserForm from './Actions/UserForm';
 export default function UserProfile({ user }) {
     const [userProfile, setUserProfile] = useState({});
 
-    const handleCreateUser = () => {
+    const handleCreateUser = useCallback(() => {
         const userObj = {
             first_name: user.first_name,
             last_name: user.last_name,
@@ -23,7 +22,7 @@ export default function UserProfile({ user }) {
             .catch((e) => {
                 console.log(e);
             });
-    };
+    });
 
     const retrieveUserInfo = useCallback(() => {
         UserDataService.getUserInfo(user.googleId)
@@ -31,12 +30,13 @@ export default function UserProfile({ user }) {
                 setUserProfile(response.data);
             })
             .catch((e) => {
-                console.log(e.response.data.error);
-                if (e.response.data.error === 'user not found' && user) {
+                if (e.response.data.error && user) {
                     handleCreateUser();
+                } else {
+                    console.log(e);
                 }
             });
-    }, [user]);
+    }, [user, handleCreateUser]);
 
     useEffect(() => {
         retrieveUserInfo();

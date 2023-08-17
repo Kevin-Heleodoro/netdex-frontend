@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Modal } from 'react-bootstrap';
 import ContactForm from './Actions/ContactForm';
-import NoteForm from './Actions/NoteForm';
 
 import ContactDataService from '../services/contacts';
 
@@ -56,14 +55,30 @@ const ContactModal = ({
                         : 'New Contact'}
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-                <ContactForm
-                    contact={contact || ''}
-                    editDisabled={editDisabled}
-                    setEditDisabled={setEditDisabled}
-                    retrieveContacts={retrieveContacts}
-                />
-                <NoteForm />
+            <Modal.Body className="contact-modal-body">
+                <div className="contact-modal-details">
+                    <ContactForm
+                        contact={contact || ''}
+                        editDisabled={editDisabled}
+                        setEditDisabled={setEditDisabled}
+                        retrieveContacts={retrieveContacts}
+                    />
+                </div>
+                <div className="contact-modal-notes">
+                    <h3>Notes</h3>
+                    {contact.notes &&
+                        contact.notes.map((note) =>
+                            note.note ? (
+                                <div className="contact-note" key={note.date}>
+                                    {new Date(note.date).toDateString()}
+                                    <br />
+                                    {note.note}
+                                </div>
+                            ) : (
+                                ''
+                            )
+                        )}
+                </div>
             </Modal.Body>
             <Modal.Footer>
                 {editDisabled && !confirmDelete && (

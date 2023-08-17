@@ -79,3 +79,23 @@ img.netdex-logo {
     height: 50px;
     padding-right: 5px;
 }
+
+.contact-modal-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.contact-modal-notes {
+    min-width: 50%;
+    margin-left: 1rem;
+}
+
+.contact-modal-details {
+    min-width: 50%;
+}
+
+.contact-note {
+    padding: 1rem;
+}
