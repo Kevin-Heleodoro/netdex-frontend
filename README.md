@@ -8,7 +8,7 @@
     <img src="src/img/readme/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">MERN Project Frontend</h3>
+<h3 align="center">NetDex Frontend</h3>
 
   <p align="center">
     This project serves as the front end for the NetDex application. The client side is rendered through React and provides Google OAuth authentication services.
